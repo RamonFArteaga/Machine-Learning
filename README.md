@@ -13,8 +13,8 @@ Adapted from the author's Intelligent-Agents portfolio. About Me is preserved in
 
 No standalone Reflection section is included. The unit evidence is reproduced from the supplied file without inventing missing material. Images open at their original resolution.
 
-## Publish on GitHub Pages
+## Hosting
 
-Create a new repository named Machine-Learning. Upload the contents of this folder (index.html must be at the repository root). In Settings → Pages → Build and deployment, select GitHub Actions. Push to main or run the Deploy portfolio to GitHub Pages workflow.
+GitHub Pages publishes from the main branch and repository root. Future commits to main update the website automatically. No build or installation is required.
 
 The website uses relative links and requires no build or installation. Open index.html locally to inspect it. The notebook HTML reproduces saved outputs; it does not run code. PowerPoint is supplied as the original downloadable file.
