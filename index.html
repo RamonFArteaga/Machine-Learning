@@ -1,0 +1,681 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Machine Learning e-Portfolio | Ramon Flores Arteaga</title><style>
+    :root {
+  --background: #0f1217;
+  --surface: #171b22;
+  --surface-light: #202630;
+  --border: #303846;
+
+  --text: #e8ebf0;
+  --muted: #aeb7c6;
+
+  --accent: #2ea8ff;
+  --accent-dark: #0078d4;
+  --link: #59b8ff;
+}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 30px 0 25px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 4px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(9, 11, 13, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  overflow-x: visible;
+  list-style: none;
+}
+
+    .nav-button {
+      background: none;
+      border: none;
+      color: #b5bfd4;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: bold;
+      padding: 20px 0 17px;
+      white-space: nowrap;
+      border-bottom: 4px solid transparent;
+    }
+
+    .nav-button:hover {
+      color: var(--text);
+    }
+
+    .nav-button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent-dark);
+    }
+
+    main {
+      min-height: 70vh;
+      padding: 45px 0 70px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero {
+      padding: 65px 0;
+    }
+
+    .hero-label {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      max-width: 850px;
+      margin: 12px 0 20px;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .card:hover{
+    transform: translateY(-6px);
+    border-color:#2EA8FF;
+    background:var(--surface-light);
+    box-shadow:0 0 25px rgba(46,168,255,.18);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button:hover {
+      filter: brightness(1.15);
+      text-decoration: none;
+    }
+
+    .section-title {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .section-introduction {
+      max-width: 850px;
+      margin-bottom: 30px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-dark);
+      background: var(--surface-light);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .content-block {
+      margin-bottom: 28px;
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .content-block h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .content-block p {
+      margin-bottom: 14px;
+    }
+
+    .content-block ul {
+      padding-left: 22px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-agents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .agent {
+      padding: 18px;
+      text-align: center;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+  .nav-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 28px;
+    padding-bottom: 7px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-dark) var(--surface);
+  }
+
+  .nav-list::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .nav-list::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 10px;
+  }
+
+  .nav-list::-webkit-scrollbar-thumb {
+    background: var(--accent-dark);
+    border-radius: 10px;
+  }
+
+  .hero {
+    padding: 40px 0;
+  }
+
+  main {
+    padding-top: 30px;
+  }
+}
+
+
+    .discussion-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+  
+nav .container{width:min(1400px,94%)} .nav-list{gap:0 24px}.nav-button{font-size:.95rem;white-space:normal;text-align:left;padding:16px 0;max-width:350px}
+img{max-width:100%;height:auto;display:block}figure{margin:24px 0}figure img{border-radius:8px;background:white}figcaption{color:var(--muted);font-size:.85rem;margin-top:8px}
+details{border:1px solid var(--border);border-radius:10px;margin:16px 0;background:var(--surface)}summary{cursor:pointer;font-weight:bold;padding:22px;color:var(--text)}details .unit-content{padding:0 24px 24px}.unit-content p{white-space:pre-wrap;overflow-wrap:anywhere}
+.table-wrap{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%}td,th{padding:10px;border:1px solid var(--border);text-align:left}iframe{width:100%;min-height:75vh;border:1px solid var(--border);border-radius:8px;background:white;margin-top:24px}
+.file-meta{color:var(--muted);font-size:.85rem}.content-block p{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#11151c;border:1px solid var(--border);padding:18px;border-radius:8px;margin:16px 0;max-height:650px;overflow:auto}code{font-family:monospace}.button{cursor:pointer} .card .button-row{margin-top:20px} .section-title{overflow-wrap:anywhere}
+@media(max-width:650px){.nav-list{gap:0 15px}.nav-button{font-size:.8rem;max-width:150px}.hero{padding:30px 0}main{padding-top:24px}details .unit-content{padding:0 12px 16px}summary{padding:16px}iframe{min-height:55vh}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style></head><body><header><div class="container"><h1>Machine Learning e-Portfolio</h1><p>Ramon Flores Arteaga · MSc Artificial Intelligence</p></div></header><nav aria-label="Main navigation"><div class="container"><ul class="nav-list"><li><button class="nav-button active" data-section="home">Home</button></li><li><button class="nav-button" data-section="project">Development Team Project: Project Report</button></li><li><button class="nav-button" data-section="individual-presentation">Individual Presentation</button></li><li><button class="nav-button" data-section="discussions">Discussions</button></li><li><button class="nav-button" data-section="about">About Me</button></li></ul></div></nav><main class="container">
+<section id="home" class="section active"><div class="hero"><div class="hero-label">University of Essex</div><h2>Machine Learning</h2><p>My academic work across data exploration, regression, clustering, neural networks and responsible machine learning. This portfolio brings together the development team project, individual presentation and evidence from Units 1–12.</p><div class="button-row"><button class="button open-section" data-section="project">View Team Project Report</button><button class="button secondary open-section" data-section="individual-presentation">View Individual Presentation</button></div><div class="tag-list"><span class="tag">Machine Learning</span><span class="tag">Computer Vision</span><span class="tag">Data Analysis</span><span class="tag">Responsible AI</span></div></div>
+<div class="grid"><article class="card"><h3>Development Team Project</h3><p>Group D — Airbnb NYC market segmentation and price prediction.</p><button class="button open-section" data-section="project">Open report</button></article><article class="card"><h3>Individual Presentation</h3><p>Comparative intelligence and ethics in machine learning systems: distracted driver classification.</p><button class="button open-section" data-section="individual-presentation">Open presentation materials</button></article><article class="card"><h3>Discussions and Unit Evidence</h3><p>Initial posts, summary posts, peer responses and practical activities, organised by unit.</p><button class="button open-section" data-section="discussions">Explore Units 1–12</button></article></div></section>
+<section id="project" class="section"><h2 class="section-title">Development Team Project: Project Report</h2><article class="content-block"><h3>Group D Machine Learning</h3><p>Airbnb NYC Market Segmentation and Price Prediction</p><div class="button-row"><a class="button" href="group-report.pdf" target="_blank" rel="noopener">Read project report</a><a class="button secondary" href="group-report.pdf" download>Download PDF</a></div><iframe loading="lazy" title="Group D Machine Learning project report" src="group-report.pdf"><p><a href="group-report.pdf">Read the report</a></p></iframe></article></section>
+<section id="individual-presentation" class="section"><h2 class="section-title">Individual Presentation</h2><p class="section-intro">Comparative Intelligence and Ethics in Machine Learning Systems — Distracted Driver Classification.</p><div class="grid"><article class="card"><h3>Presentation</h3><p>The original PowerPoint slide deck.</p><div class="button-row"><a class="button" href="Presentation.pptx" download>Download presentation</a></div><p class="file-meta">PowerPoint · PPTX</p></article><article class="card"><h3>Transcript</h3><p>The accompanying presentation speech and references.</p><div class="button-row"><a class="button" href="transcript.html">Read transcript</a><a class="button secondary" href="Transcript.docx" download>Download DOCX</a></div></article><article class="card"><h3>Distracted Driver Classification</h3><p>The original Jupyter notebook, with a browser-readable copy of its saved code and outputs.</p><div class="button-row"><a class="button" href="notebook.html">Read notebook</a><a class="button secondary" href="distracted_driver_classification.ipynb" download>Download notebook</a></div></article></div></section>
+<section id="discussions" class="section"><h2 class="section-title">Discussions</h2><p class="section-intro">Unit activities and discussion evidence from the supplied Final Assignment document. Expand a unit to read its initial posts, summaries and supporting work.</p><div class="button-row"><button class="button secondary" id="expand-units">Expand all units</button><a class="button secondary" href="Final-Assignment.docx" download>Download unit evidence</a></div><details id="unit-1"><summary>Unit 1: Introduction to Machine Learning</summary><div class="unit-content"><h3>Initial Post</h3><figure><a href="image1.jpeg" target="_blank" rel="noopener"><img loading="lazy" src="image1.jpeg" alt="Unit 1: Introduction to Machine Learning — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><h3>Summary</h3><figure><a href="image2.jpeg" target="_blank" rel="noopener"><img loading="lazy" src="image2.jpeg" alt="Unit 1: Introduction to Machine Learning — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure></div></details><details id="unit-2"><summary>Unit 2: Exploratory Data Analysis</summary><div class="unit-content"><p>Content</p><p>01_House_Prices_Completed.ipynb — The completed original house-price tutorial.</p><p>02_Auto_MPG_EDA.ipynb — The Auto-mpg analysis covering the five tasks of the assignment.</p><div class="table-wrap"><table><tr><td>File</td><td>Purpose</td></tr><tr><td>01_House_Prices_Completed.ipynb</td><td>Editable Jupyter notebook containing the completed house-price tutorial, code, charts and explanations.</td></tr><tr><td>02_Auto_MPG_EDA.ipynb</td><td>Editable Jupyter notebook containing the Auto-mpg analysis and findings.</td></tr><tr><td>01_House_Prices_Completed.html</td><td>Browser-readable version of the completed house-price notebook.</td></tr><tr><td>02_Auto_MPG_EDA.html</td><td>Browser-readable version of the Auto-mpg notebook.</td></tr><tr><td>data/train.csv</td><td>Original house-price training dataset, including  SalePrice .</td></tr><tr><td>data/test.csv</td><td>Original house-price test dataset, without  SalePrice .</td></tr><tr><td>data/auto-mpg.csv</td><td>Original vehicle dataset used for the five required tasks.</td></tr><tr><td>Auto_MPG_Missing_Values.csv</td><td>Missing-value counts and percentages for each variable.</td></tr><tr><td>Auto_MPG_Skewness_Kurtosis.csv</td><td>Calculated skewness, excess kurtosis and observation counts.</td></tr><tr><td>Auto_MPG_Correlations.csv</td><td>Numerical correlation matrix.</td></tr><tr><td>Auto_MPG_Numerical_Encoded.csv</td><td>Derived numerical dataset containing the origin codes. Missing horsepower values remain unfilled.</td></tr><tr><td>charts/auto_missingness.png</td><td>Missing-value charts.</td></tr><tr><td>charts/auto_distributions.png</td><td>Histograms of the numerical variables.</td></tr><tr><td>charts/auto_correlation.png</td><td>Correlation heatmap.</td></tr><tr><td>charts/auto_scatterplots.png</td><td>Scatter plots comparing vehicle characteristics with MPG.</td></tr><tr><td>Seminar_and_Eportfolio_Notes.md</td><td>Findings, seminar speaking notes and reflection prompts.</td></tr><tr><td>README.md</td><td>Instructions for opening and running the notebooks.</td></tr><tr><td>original/ Original_Essex_Tutorial.ipynb</td><td>Unmodified tutorial provided by the university, retained for comparison.</td></tr></table></div><p>2. Auto-mpg findings</p><p>Identify missing values</p><p>The dataset contains 398 vehicles and nine variables. Six values are missing from the horsepower column, representing 1.508% of the observations. These are recorded as question marks (?) in the original file, which causes horsepower to be read as text.</p><p>After replacing ? with NaN, horsepower was converted to a numerical variable. No other missing values were detected. Removing the six incomplete observations would leave 392 complete rows, although missingness should be investigated before choosing a treatment.</p><p>Estimate skewness and kurtosis</p><p>The table reports excess kurtosis, for which a normal distribution has a reference value of 0.</p><div class="table-wrap"><table><tr><td>Variable</td><td>Skewness</td><td>Excess kurtosis</td></tr><tr><td>MPG</td><td>0.457</td><td>−0.511</td></tr><tr><td>Cylinders</td><td>0.527</td><td>−1.377</td></tr><tr><td>Displacement</td><td>0.720</td><td>−0.747</td></tr><tr><td>Horsepower</td><td>1.087</td><td>0.697</td></tr><tr><td>Weight</td><td>0.531</td><td>−0.786</td></tr><tr><td>Acceleration time</td><td>0.279</td><td>0.419</td></tr><tr><td>Model year</td><td>0.012</td><td>−1.181</td></tr></table></div><p>Horsepower has the strongest positive skewness, indicating a longer tail towards high-powered vehicles. MPG, displacement and weight also have positive skewness. Model year has approximately zero skewness, although this does not mean it follows a normal distribution.</p><p>Horsepower and acceleration time have positive excess kurtosis, suggesting heavier tails relative to a normal reference. The remaining variables have negative excess kurtosis. Origin and car name were excluded because they are nominal categories.</p><p>Correlation heatmap</p><p>The following Pearson correlations describe relationships with MPG:</p><div class="table-wrap"><table><tr><td>Variable</td><td>Correlation with MPG</td></tr><tr><td>Weight</td><td>−0.832</td></tr><tr><td>Displacement</td><td>−0.804</td></tr><tr><td>Horsepower</td><td>−0.778</td></tr><tr><td>Cylinders</td><td>−0.775</td></tr><tr><td>Model year</td><td>0.579</td></tr><tr><td>Acceleration time</td><td>0.420</td></tr></table></div><p>Weight has the strongest negative association with MPG. Heavier vehicles generally have lower fuel economy. Larger engines, higher horsepower and more cylinders are also associated with lower MPG.</p><p>Later model years are associated with higher MPG. Weight, displacement, horsepower and cylinders are strongly related to one another, so their effects should not be interpreted independently.</p><p>Origin was excluded because correlations based on arbitrary category codes could be misleading. These correlations show association, not causation.</p><p>Scatter plots for different parameters</p><p>The scatter plots support the heatmap findings:</p><p>Weight versus MPG: fuel economy generally decreases as weight increases, with a curved pattern.</p><p>Horsepower versus MPG: higher-powered vehicles generally have lower MPG.</p><p>Displacement versus MPG: larger engines generally have lower MPG.</p><p>Model year versus MPG: later vehicles tend to achieve higher MPG.</p><p>Cylinders versus MPG: four-cylinder vehicles generally achieve higher MPG than eight-cylinder vehicles.</p><p>Acceleration time versus MPG: vehicles taking longer to accelerate tend to have higher MPG. A higher time means slower acceleration, not better acceleration performance.</p><p>The plots also show substantial variation between vehicles, indicating that no single characteristic fully explains fuel economy.</p><p>Replace categorical values with numerical values</p><p>The original dataset already contains numerical origin codes:</p><div class="table-wrap"><table><tr><td>Origin</td><td>Numerical code</td><td>Vehicles</td></tr><tr><td>America</td><td>1</td><td>249</td></tr><tr><td>Europe</td><td>2</td><td>70</td></tr><tr><td>Japan</td><td>3</td><td>79</td></tr></table></div><p>The notebook converts these codes into readable labels and then maps the labels back to numbers to demonstrate the requested encoding.</p><p>These codes represent categories, not a numerical ranking. The notebook also demonstrates one-hot encoding, creating separate indicator columns for each origin. Car names were excluded from the baseline numerical feature table because assigning sequential numbers to names would introduce an artificial order.</p></div></details><details id="unit-3"><summary>Unit 3: Correlation and Regression</summary><div class="unit-content"><p># Exercise 1 · Covariance and Pearson correlation **Objective:** Investigate changes in noise, relationship direction, units, offsets and sample size. The baseline follows the Unit 3 course programme. Controlled experiments vary the data or model specification and compare numerical results with graphical evidence. Synthetic perturbations demonstrate statistical behaviour and are distinguished from observed measurements. The analysis considers sensitivity to data changes, model fit and the limitations of prediction. Results are reproducible using the fixed random seeds and the documented data sources.</p><p>Python cell 1</p><p>Python 3.12.14 | NumPy 2.3.5 | pandas 2.2.3</p><p>## 1. Original programme: reproduce the baseline `data1` is a simulated normally distributed variable. `data2` equals `data1` plus a constant and independent noise. A fixed seed makes the results reproducible; it does not guarantee a particular population correlation in every finite sample.</p><p>Python cell 2</p><p>data1: mean=100.776, population-form std=19.620</p><p>data2: mean=151.050, population-form std=22.358</p><p>Sample covariance=389.755; Pearson r=0.887612</p><div class="table-wrap"><table><tr><td></td><td>data1</td><td>data2</td></tr><tr><td>data1</td><td>385.332977</td><td>389.754562</td></tr><tr><td>data2</td><td>389.754562</td><td>500.380061</td></tr></table></div><figure><a href="image3.png" target="_blank" rel="noopener"><img loading="lazy" src="image3.png" alt="Unit 3: Correlation and Regression — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>## 2. Change noise, direction, scale, offset and one data point The same `data1` and standardised noise draws are reused. Thus noise strength changes without also changing the random sample. The outlier row is deliberately artificial. Positive rescaling and translation change numerical values but leave Pearson r unchanged; negative rescaling reverses its sign. Covariance depends on measurement units.</p><p>Python cell 3</p><div class="table-wrap"><table><tr><td></td><td>n</td><td>Sample covariance</td><td>Pearson r</td><td>Slope</td><td>Intercept</td></tr><tr><td>Scenario</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Baseline: noise SD 10</td><td>1000</td><td>389.7546</td><td>0.8876</td><td>1.0115</td><td>49.1169</td></tr><tr><td>Higher noise: SD 40</td><td>1000</td><td>403.0193</td><td>0.4459</td><td>1.0459</td><td>46.4675</td></tr><tr><td>No noise</td><td>1000</td><td>385.3330</td><td>1.0000</td><td>1.0000</td><td>50.0000</td></tr><tr><td>Negative relationship</td><td>1000</td><td>-380.9114</td><td>-0.8832</td><td>-0.9885</td><td>249.1169</td></tr><tr><td>No signal: independent noise</td><td>1000</td><td>4.4216</td><td>0.0219</td><td>0.0115</td><td>149.1169</td></tr><tr><td>Multiply data1 by 10</td><td>1000</td><td>3897.5456</td><td>0.8876</td><td>0.1011</td><td>49.1169</td></tr><tr><td>Add 500 to data2</td><td>1000</td><td>389.7546</td><td>0.8876</td><td>1.0115</td><td>549.1169</td></tr><tr><td>Add conflicting point (300, 0)</td><td>1001</td><td>359.3022</td><td>0.7627</td><td>0.8462</td><td>65.4516</td></tr></table></div><figure><a href="image4.png" target="_blank" rel="noopener"><img loading="lazy" src="image4.png" alt="Unit 3: Correlation and Regression — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>## 3. Change the number of observations Take prefixes of the same original sample. Report Fisher-transformation approximate 95% intervals, assuming independent observations and an approximately bivariate-normal population. These prefixes are nested, not independent repeated experiments. Increasing sample size usually improves precision; it does not guarantee that observed r increases or moves monotonically.</p><p>Python cell 4</p><div class="table-wrap"><table><tr><td></td><td>n</td><td>Pearson r</td><td>Approx. 95% lower</td><td>Approx. 95% upper</td></tr><tr><td>0</td><td>10</td><td>0.9048</td><td>0.6393</td><td>0.9775</td></tr><tr><td>1</td><td>30</td><td>0.8883</td><td>0.7766</td><td>0.9459</td></tr><tr><td>2</td><td>100</td><td>0.8761</td><td>0.8209</td><td>0.9150</td></tr><tr><td>3</td><td>1000</td><td>0.8876</td><td>0.8737</td><td>0.9001</td></tr></table></div><p>## Findings and interpretation Compare the baseline and high-noise rows: added independent noise weakens the observed positive linear relationship. Removing noise gives r = 1. The negative-slope experiment reverses the direction. Independent noise has a sample correlation close to zero, rather than exactly zero. The conflicting point changes the estimates, illustrating sensitivity to unusual observations. Pearson r is dimensionless and measures linear association. Covariance is unit-dependent. Neither establishes causation, and r near zero does not rule out a nonlinear relationship. Exercise 4 provides an explicit nonlinear example.</p></div></details><details id="unit-4"><summary>Unit 4: Linear Regression with Scikit-Learn</summary><div class="unit-content"><p>No scheduled activity,  just follow up with seminar.</p></div></details><details id="unit-5"><summary>Unit 5: Clustering</summary><div class="unit-content"><p>e-Portfolio: Jaccard Distance/Dissimilarity Calculations.</p><p>Jaccard dissimilarity uses the presence of symptoms or positive test results, excluding shared absences.</p><p>Assuming Y = yes, P = positive, N = negative/no and A = absent, encode Y and P as 1, and N and A as 0. Name is an identifier, and gender is excluded from the comparison of clinical findings.</p><div class="table-wrap"><table><tr><td>Individual</td><td>Fever</td><td>Cough</td><td>Test-1</td><td>Test-2</td><td>Test-3</td><td>Test-4</td></tr><tr><td>Jack</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>Mary</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr><tr><td>Jim</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table></div><p>The formula is:</p><p>\[ d_J=\frac{b+c}{a+b+c} \]</p><p>Here, \(a\) counts attributes where both individuals have 1, while \(b+c\) counts attributes where only one individual has 1. Attributes where both have 0 are ignored.</p><div class="table-wrap"><table><tr><td>Pair</td><td>Shared positives \(a\)</td><td>Mismatches \( b+c \)</td><td>Calculation</td><td>Jaccard dissimilarity</td></tr><tr><td>Jack, Mary</td><td>2</td><td>1</td><td>\( 1 /( 2+ 1)\ )</td><td>0.3333</td></tr><tr><td>Jack, Jim</td><td>1</td><td>2</td><td>\( 2 /( 1+ 2)\ )</td><td>0.6667</td></tr><tr><td>Jim, Mary</td><td>1</td><td>3</td><td>\( 3 /( 1+ 3)\ )</td><td>0.7500</td></tr></table></div><p>Jack and Mary share Fever and Test-1, differing only on Test-3 among their positive attributes. Jack and Jim share Fever, but differ on Cough and Test-1. Jim and Mary share Fever, but differ on Cough, Test-1 and Test-3.</p><p>Therefore, Jack and Mary are the most similar pair, while Jim and Mary are the most dissimilar.</p></div></details><details id="unit-6"><summary>Unit 6: Clustering with Python</summary><div class="unit-content"><p>Formative: Updated e-Portfolio and have a team update.</p></div></details><details id="unit-7"><summary>Unit 7: Introduction to Artificial Neural Networks</summary><div class="unit-content"><p>e-Portfolio: Perceptron Activities</p><p># Exercise 1 · Simple perceptron This activity implements a weighted sum using NumPy and applies a step activation. It compares the original positive and negative weights, then examines the effect of changing inputs, weights and the threshold. For inputs x and weights w, the weighted sum is z = x · w. The output is 1 when z ≥ threshold and 0 otherwise. The original threshold is 1. There is no separate bias parameter or training loop in this activity; the weights are specified manually. Course source: Lakoju, M. (n.d.) *Unit 7 perceptron activities*, University of Essex Online course notebooks. Exercises 1 and 2 identify Cardiff Metropolitan University in their source attribution. The calculations and explanations below follow these teaching examples.</p><p>Python cell 1</p><p>Python 3.12.14 | NumPy 2.3.5 | pandas 2.2.3</p><p>1. Inputs, weights and the dot product The original input vector contains 45 and 25. The initial weight vector contains 0.7 and 0.1. The dot product multiplies corresponding entries and sums the products.</p><p>Python cell 2</p><p>Input type: ndarray | shape: (2,)</p><p>First input: 45.0 | first weight: 0.7</p><p>Weighted sum: 34.0</p><p>Step output: 1</p><p> 2. Negative first weight Changing only the first weight from 0.7 to −0.7 reverses its contribution. The weighted sum becomes −29, which is below the threshold of 1.</p><p>Python cell 3</p><p>Weighted sum: -28.999999999999996</p><p>Step output: 0</p><p>3. Controlled changes and the threshold boundary The following comparisons isolate changes in inputs, signs, magnitudes and threshold. The step output is a binary decision, rather than a probability. A weighted sum equal to the threshold is assigned class 1.</p><p>Python cell 4</p><div class="table-wrap"><table><tr><td></td><td>Scenario</td><td>Inputs</td><td>Weights</td><td>Threshold</td><td>Weighted sum</td><td>Output</td></tr><tr><td>0</td><td>Original weights</td><td>[45, 25]</td><td>[0.7, 0.1]</td><td>1.0</td><td>34.0</td><td>1</td></tr><tr><td>1</td><td>Negative first weight</td><td>[45, 25]</td><td>[-0.7, 0.1]</td><td>1.0</td><td>-29.0</td><td>0</td></tr><tr><td>2</td><td>Smaller input values</td><td>[1, 1]</td><td>[0.7, 0.1]</td><td>1.0</td><td>0.8</td><td>0</td></tr><tr><td>3</td><td>Lower threshold</td><td>[1, 1]</td><td>[0.7, 0.1]</td><td>0.5</td><td>0.8</td><td>1</td></tr><tr><td>4</td><td>Original inputs, smaller weights</td><td>[45, 25]</td><td>[0.01, 0.01]</td><td>1.0</td><td>0.7</td><td>0</td></tr><tr><td>5</td><td>Exact threshold</td><td>[1, 3]</td><td>[0.7, 0.1]</td><td>1.0</td><td>1.0</td><td>1</td></tr><tr><td>6</td><td>Higher threshold</td><td>[45, 25]</td><td>[0.7, 0.1]</td><td>35.0</td><td>34.0</td><td>0</td></tr></table></div><figure><a href="image5.png" target="_blank" rel="noopener"><img loading="lazy" src="image5.png" alt="Unit 7: Introduction to Artificial Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>Findings The original weighted sum is 45 × 0.7 + 25 × 0.1 = 34, producing output 1. </p><p>Replacing the first weight with −0.7 gives −29 and output 0. Smaller positive inputs or weights can reduce the sum below the threshold, while reducing the threshold can change the decision without altering the sum. This activity demonstrates a forward calculation with fixed weights. It does not estimate weights from labelled examples. In subsequent activities, a learning rule updates weights from errors. A fixed threshold can also be expressed as a fixed negative bias in a zero-threshold formulation; it is not a learned bias in this example.</p><p>Exercise 2 · Perceptron for the AND operator This activity trains a single perceptron on the four Boolean input combinations. The target is 1 only when both inputs are 1. The source calculation is reproduced with a finite iteration limit, followed by a signed-error implementation of the perceptron learning rule. The network uses two input weights, a fixed threshold of 1 and no separately learned bias. The AND truth table is linearly separable. Course source: Lakoju, M. (n.d.) *Unit 7 perceptron activities*, University of Essex Online course notebooks. Exercises 1 and 2 identify Cardiff Metropolitan University in their source attribution. The calculations and explanations below follow these teaching examples.</p><p>Python cell 1</p><p>Python 3.12.14 | NumPy 2.3.5 | pandas 2.2.3</p><p>1.Truth table and initial prediction Zero initial weights produce a weighted sum of zero for every input. At threshold 1, every initial prediction is therefore 0.</p><p>Python cell 2</p><p>Input shape: (4, 2) | target shape: (4,)</p><div class="table-wrap"><table><tr><td></td><td>x1</td><td>x2</td><td>AND target</td><td>Initial prediction</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>2</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>3</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table></div><p>2. Reproduce the source training rule The source rule adds learning_rate × input × absolute_error to each weight. It only increases weights. It succeeds for this specific AND example, starting from zero with learning rate 0.1, because the errors encountered are false negatives. It is not a general perceptron rule: false positives require negative corrections. The loop is bounded to prevent non-termination for unsuitable settings. The source stopping condition uses the number of errors encountered during a full training pass. A final pass with no errors is therefore included, even if the preceding pass has already produced correct final weights.</p><p>Python cell 3</p><p>Converged: True | epochs: 6 | final weights: [0.5 0.5]</p><div class="table-wrap"><table><tr><td></td><td>Epoch</td><td>Errors during pass</td><td>Errors after pass</td><td>w1</td><td>w2</td></tr><tr><td>0</td><td>1</td><td>1</td><td>1</td><td>0.1</td><td>0.1</td></tr><tr><td>1</td><td>2</td><td>1</td><td>1</td><td>0.2</td><td>0.2</td></tr><tr><td>2</td><td>3</td><td>1</td><td>1</td><td>0.3</td><td>0.3</td></tr><tr><td>3</td><td>4</td><td>1</td><td>1</td><td>0.4</td><td>0.4</td></tr><tr><td>4</td><td>5</td><td>1</td><td>0</td><td>0.5</td><td>0.5</td></tr><tr><td>5</td><td>6</td><td>0</td><td>0</td><td>0.5</td><td>0.5</td></tr></table></div><div class="table-wrap"><table><tr><td></td><td>x1</td><td>x2</td><td>Target</td><td>Weighted sum</td><td>Prediction</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0.0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0.5</td><td>0</td></tr><tr><td>2</td><td>1</td><td>0</td><td>0</td><td>0.5</td><td>0</td></tr><tr><td>3</td><td>1</td><td>1</td><td>1</td><td>1.0</td><td>1</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></table></div><p>3. Signed-error perceptron and learning-rate comparison The standard signed update is w ← w + learning_rate × (target − prediction) × input. It increases weights for false negatives and decreases them for false positives. The threshold remains fixed to preserve the source architecture. Convergence still depends on representability, update settings and the data; an epoch limit remains necessary.</p><p>Python cell 4</p><div class="table-wrap"><table><tr><td></td><td>Learning rate</td><td>Epochs including zero-error pass</td><td>w1</td><td>w2</td><td>Converged</td><td>Correct truth-table rows</td></tr><tr><td>0</td><td>0.05</td><td>12</td><td>0.55</td><td>0.55</td><td>True</td><td>4</td></tr><tr><td>1</td><td>0.10</td><td>6</td><td>0.50</td><td>0.50</td><td>True</td><td>4</td></tr><tr><td>2</td><td>0.20</td><td>4</td><td>0.60</td><td>0.60</td><td>True</td><td>4</td></tr></table></div><figure><a href="image6.png" target="_blank" rel="noopener"><img loading="lazy" src="image6.png" alt="Unit 7: Introduction to Artificial Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>4. Threshold changes with the trained weights fixed Changing the activation threshold changes the classification rule without refitting weights. The truth-table outputs below compare thresholds 0.5, 1.0 and 1.5.</p><p>Python cell 5</p><div class="table-wrap"><table><tr><td></td><td>x1</td><td>x2</td><td>AND target</td><td>Prediction threshold 0.5</td><td>Prediction threshold 1.0</td><td>Prediction threshold 1.5</td></tr><tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>2</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>3</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table></div><figure><a href="image7.png" target="_blank" rel="noopener"><img loading="lazy" src="image7.png" alt="Unit 7: Introduction to Artificial Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>Findings The source procedure learns weights that classify all four AND combinations correctly. The signed-error implementation produces correct classifications for each tested learning rate, although the number of passes and final weights can differ. A lower threshold can change the rule to OR, while a higher threshold can suppress all positive classifications. The 4/4 result checks the complete Boolean truth table. It is not a held-out performance estimate for an external population. AND is linearly separable; XOR cannot be represented by a single linear threshold unit. </p></div></details><details id="unit-8"><summary>Unit 8: Training and Artificial Neural Network</summary><div class="unit-content"><p>Collaborative Discussion 2: Legal and Ethical Views on ANN Applications. </p><h3>Initial Post</h3><figure><a href="image8.png" target="_blank" rel="noopener"><img loading="lazy" src="image8.png" alt="Unit 8: Training and Artificial Neural Network — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><h3>Peer Response #1</h3><figure><a href="image9.png" target="_blank" rel="noopener"><img loading="lazy" src="image9.png" alt="Unit 8: Training and Artificial Neural Network — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><h3>Peer Response #2</h3><figure><a href="image9.png" target="_blank" rel="noopener"><img loading="lazy" src="image9.png" alt="Unit 8: Training and Artificial Neural Network — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><h3>Summary Post</h3><figure><a href="image10.png" target="_blank" rel="noopener"><img loading="lazy" src="image10.png" alt="Unit 8: Training and Artificial Neural Network — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure></div></details><details id="unit-9"><summary>Unit 9: Introduction to Convolutional Neural Networks</summary><div class="unit-content"><p>CNN object recognition The supplied convolutional neural network is trained on CIFAR-10. The required prediction experiment changes test index 16 to 7. Index 7 was fixed before evaluating predictions. Indexing is zero-based, so index 7 represents the eighth test image. The original architecture, 40,000/10,000 training/validation split, Adam optimiser, batch size 32 and maximum 25 epochs are retained. Compatibility changes replace deprecated `predict_classes` with `predict` and `argmax`, use a single TensorFlow/Keras API, and introduce an explicit input layer. Images remain four-dimensional until the Flatten layer. Float32 preprocessing reduces memory use. Early stopping monitors validation loss with patience 2; restoring the best validation-loss weights is an explicit improvement over the original default. A seeded, shuffled `tf.data` pipeline controls CPU resource use. Results may vary across hardware and software versions. This is ten-class object classification, not face identification. It illustrates the mechanics and limitations of image recognition without testing the reliability or fairness of a biometric system. The lecturecast was not supplied; this record covers the supplied notebook and the stated reading activity.</p><p>1. Libraries and reproducibility TensorFlow 2.20.0 was used for execution. A Python environment with the packages listed in `requirements.txt` is sufficient. CIFAR-10 is downloaded by Keras on the first run; internet access is required. No separate CSV file is needed.</p><p>Python cell 1</p><p>Python: 3.12.14 | TensorFlow: 2.20.0</p><p>2. Dataset and preprocessing CIFAR-10 contains 60,000 colour images of size 32 × 32: 50,000 training and 10,000 test images, distributed across ten object classes (Krizhevsky, 2009). The first 10,000 training images form the validation set, matching the tutorial. Pixel intensities are scaled from 0–255 to 0–1. Labels are one-hot encoded for categorical cross-entropy. Validation determines when training stops; the test set is reserved for final evaluation.</p><p>Python cell 2</p><div class="table-wrap"><table><tr><td></td><td>split</td><td>images</td></tr><tr><td>0</td><td>training</td><td>40000</td></tr><tr><td>1</td><td>validation</td><td>10000</td></tr><tr><td>2</td><td>test</td><td>10000</td></tr></table></div><div class="table-wrap"><table><tr><td></td><td>class</td><td>test_images</td></tr><tr><td>0</td><td>airplane</td><td>1000</td></tr><tr><td>1</td><td>automobile</td><td>1000</td></tr><tr><td>2</td><td>bird</td><td>1000</td></tr><tr><td>3</td><td>cat</td><td>1000</td></tr><tr><td>4</td><td>deer</td><td>1000</td></tr><tr><td>5</td><td>dog</td><td>1000</td></tr><tr><td>6</td><td>frog</td><td>1000</td></tr><tr><td>7</td><td>horse</td><td>1000</td></tr><tr><td>8</td><td>ship</td><td>1000</td></tr><tr><td>9</td><td>truck</td><td>1000</td></tr></table></div><p>3. Model architecture Convolutional filters learn spatial patterns shared across image positions. ReLU introduces non-linearity. Max pooling reduces spatial resolution; Flatten converts the final feature maps to an 800-element vector. A dense layer combines features and softmax assigns scores to the ten classes. Adam updates weights to minimise categorical cross-entropy. Softmax scores sum to one, but are not automatically calibrated estimates of correctness.</p><p>Python cell 3</p><p>Model: &quot;cifar10_tutorial_cnn&quot;</p><p>┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓</p><p>┃ Layer (type)                    ┃ Output Shape           ┃       Param # ┃</p><p>┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩</p><p>│ conv2d (Conv2D)                 │ (None, 29, 29, 32)     │         1,568 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ max_pooling2d (MaxPooling2D)    │ (None, 14, 14, 32)     │             0 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ conv2d_1 (Conv2D)               │ (None, 11, 11, 32)     │        16,416 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ max_pooling2d_1 (MaxPooling2D)  │ (None, 5, 5, 32)       │             0 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ flatten (Flatten)               │ (None, 800)            │             0 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ dense (Dense)                   │ (None, 256)            │       205,056 │</p><p>├─────────────────────────────────┼────────────────────────┼───────────────┤</p><p>│ dense_1 (Dense)                 │ (None, 10)             │         2,570 │</p><p>└─────────────────────────────────┴────────────────────────┴───────────────┘</p><p> Total params: 225,610 (881.29 KB)</p><p> Trainable params: 225,610 (881.29 KB)</p><p> Non-trainable params: 0 (0.00 B)</p><p>4. Training and validation Training uses all 40,000 training images. Early stopping ends training after two successive epochs without a validation-loss improvement, then restores the best weights. Validation results guide this decision; test predictions do not. The history records all completed epochs, including epochs after the best checkpoint.</p><p>Python cell 4</p><p>/workspace/scratch/4b70611e66a6/work/unit09_venv/lib/python3.12/site-packages/keras/src/trainers/epoch_iterator.py:74: UserWarning: `shuffle=True` was passed, but will be ignored since the data `x` was provided as a tf.data.Dataset. The Dataset is expected to already be shuffled (via `.shuffle(buffer_size)`).</p><p>  self.data_adapter = data_adapters.get_data_adapter(</p><p>Epoch 1/25</p><p>1250/1250 - 12s - 10ms/step - accuracy: 0.4424 - loss: 1.5427 - val_accuracy: 0.5307 - val_loss: 1.3055</p><p>Epoch 2/25</p><p>1250/1250 - 9s - 7ms/step - accuracy: 0.5739 - loss: 1.2065 - val_accuracy: 0.6091 - val_loss: 1.1232</p><p>Epoch 3/25</p><p>1250/1250 - 9s - 7ms/step - accuracy: 0.6349 - loss: 1.0406 - val_accuracy: 0.6383 - val_loss: 1.0394</p><p>Epoch 4/25</p><p>1250/1250 - 9s - 8ms/step - accuracy: 0.6801 - loss: 0.9234 - val_accuracy: 0.6633 - val_loss: 0.9798</p><p>Epoch 5/25</p><p>1250/1250 - 9s - 7ms/step - accuracy: 0.7135 - loss: 0.8243 - val_accuracy: 0.6579 - val_loss: 0.9886</p><p>Epoch 6/25</p><p>1250/1250 - 9s - 7ms/step - accuracy: 0.7431 - loss: 0.7418 - val_accuracy: 0.6643 - val_loss: 1.0034</p><p>Completed epochs: 6 | Best validation-loss epoch: 4</p><p>Training time in seconds: 56.8</p><div class="table-wrap"><table><tr><td></td><td>accuracy</td><td>loss</td><td>val_accuracy</td><td>val_loss</td></tr><tr><td>epoch</td><td></td><td></td><td></td><td></td></tr><tr><td>1</td><td>0.44238</td><td>1.54267</td><td>0.5307</td><td>1.30546</td></tr><tr><td>2</td><td>0.57395</td><td>1.20652</td><td>0.6091</td><td>1.12321</td></tr><tr><td>3</td><td>0.63493</td><td>1.04055</td><td>0.6383</td><td>1.03940</td></tr><tr><td>4</td><td>0.68012</td><td>0.92343</td><td>0.6633</td><td>0.97979</td></tr><tr><td>5</td><td>0.71352</td><td>0.82433</td><td>0.6579</td><td>0.98856</td></tr><tr><td>6</td><td>0.74308</td><td>0.74182</td><td>0.6643</td><td>1.00335</td></tr></table></div><p>Python cell 5</p><figure><a href="image11.png" target="_blank" rel="noopener"><img loading="lazy" src="image11.png" alt="Unit 9: Introduction to Convolutional Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>5. Held-out test evaluation Accuracy is measured on all 10,000 test images after the validation-based checkpoint is selected. A confusion matrix and class-level precision, recall and F1 provide more information than a single accuracy value. Class errors here concern objects; they cannot establish demographic fairness.</p><p>Python cell 6</p><p>Test accuracy: 65.7800% (6578/10000 correct)</p><p>Test loss: 0.98500</p><div class="table-wrap"><table><tr><td></td><td>precision</td><td>recall</td><td>f1-score</td><td>support</td></tr><tr><td>airplane</td><td>0.7124</td><td>0.7480</td><td>0.7298</td><td>1000.0</td></tr><tr><td>automobile</td><td>0.7298</td><td>0.8050</td><td>0.7656</td><td>1000.0</td></tr><tr><td>bird</td><td>0.5672</td><td>0.4980</td><td>0.5304</td><td>1000.0</td></tr><tr><td>cat</td><td>0.5501</td><td>0.3240</td><td>0.4078</td><td>1000.0</td></tr><tr><td>deer</td><td>0.5865</td><td>0.6340</td><td>0.6093</td><td>1000.0</td></tr><tr><td>dog</td><td>0.5375</td><td>0.5880</td><td>0.5616</td><td>1000.0</td></tr><tr><td>frog</td><td>0.5964</td><td>0.8350</td><td>0.6958</td><td>1000.0</td></tr><tr><td>horse</td><td>0.7998</td><td>0.6470</td><td>0.7153</td><td>1000.0</td></tr><tr><td>ship</td><td>0.7542</td><td>0.7580</td><td>0.7561</td><td>1000.0</td></tr><tr><td>truck</td><td>0.7477</td><td>0.7410</td><td>0.7443</td><td>1000.0</td></tr><tr><td>macro avg</td><td>0.6582</td><td>0.6578</td><td>0.6516</td><td>10000.0</td></tr><tr><td>weighted avg</td><td>0.6582</td><td>0.6578</td><td>0.6516</td><td>10000.0</td></tr></table></div><figure><a href="image12.png" target="_blank" rel="noopener"><img loading="lazy" src="image12.png" alt="Unit 9: Introduction to Convolutional Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>6. Required image-index experiment: 16 → 7 `IMAGE_INDEX = 7` changes the image displayed and the label/probabilities retrieved. This avoids the misleading result obtained when the plot index is changed but a prediction still refers to index 16. Class prediction uses `argmax`, replacing the removed `predict_classes` method. The original index 16 is retained only as a comparison. A correct result for one image is not evidence that every image is classified correctly.</p><p>Python cell 7</p><div class="table-wrap"><table><tr><td></td><td>index</td><td>actual</td><td>predicted</td><td>top_softmax_score</td><td>correct</td></tr><tr><td>0</td><td>16</td><td>dog</td><td>dog</td><td>0.740291</td><td>True</td></tr><tr><td>1</td><td>7</td><td>frog</td><td>frog</td><td>0.428328</td><td>True</td></tr></table></div><figure><a href="image13.png" target="_blank" rel="noopener"><img loading="lazy" src="image13.png" alt="Unit 9: Introduction to Convolutional Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><div class="table-wrap"><table><tr><td></td><td>class</td><td>softmax_score</td></tr><tr><td>6</td><td>frog</td><td>0.428328</td></tr><tr><td>2</td><td>bird</td><td>0.314397</td></tr><tr><td>4</td><td>deer</td><td>0.202980</td></tr><tr><td>0</td><td>airplane</td><td>0.017727</td></tr><tr><td>3</td><td>cat</td><td>0.017046</td></tr><tr><td>5</td><td>dog</td><td>0.010456</td></tr><tr><td>9</td><td>truck</td><td>0.003608</td></tr><tr><td>8</td><td>ship</td><td>0.002841</td></tr><tr><td>7</td><td>horse</td><td>0.002299</td></tr><tr><td>1</td><td>automobile</td><td>0.000317</td></tr></table></div><figure><a href="image14.png" target="_blank" rel="noopener"><img loading="lazy" src="image14.png" alt="Unit 9: Introduction to Convolutional Neural Networks — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>7. Interpretation of the recorded run Training completed 6 epochs; the minimum validation loss occurred at epoch 4. Restored weights achieved **65.78% test accuracy** (6,578/10,000). Image 7 was classified **correctly**: actual **frog**, predicted **frog**, top softmax score **0.4283**. </p><p>The highest class recall was frog; the lowest was cat. The largest directional confusion was cat → dog. Changing the image index alters the example inspected, not model weights or overall test accuracy. A correct prediction on one image cannot establish deployment safety. Recorded values describe this execution; a new run may produce different values. The tables generated by the code are authoritative for a rerun.</p><p>8. Reading identification The reading is provisionally identified as Matthew Wall&#x27;s BBC article *Biased and wrong? Facial recognition tech in the dock* (8 July 2019). </p><p>The module reading-list entry and lecturecast were not supplied. The article text was consulted through an accessible mirror, listed in the references. </p><p>Ethical and social reflection Wall (2019) places image recognition within a difficult social trade-off: automated identification may support security, but mistaken matches and surveillance can harm innocent people. The article also asks whether deployment is appropriate in a particular context. This suggests that technical feasibility alone is an inadequate basis for adoption. CNNs offer a practical benefit by learning visual features instead of relying entirely on manually specified rules. In a defined setting, automated classification can assist people in reviewing large image collections. However, the value of speed depends on the consequences of errors and the availability of a reliable review process. Misclassifying an animal in a teaching exercise has different consequences from incorrectly identifying a person as a suspect. Fairness requires examination beyond overall accuracy. Buolamwini and Gebru (2018) found substantial differences across skin-tone and gender groups in commercial gender classification systems. </p><p>Their study concerned gender classification, which must be distinguished from identifying a person&#x27;s identity. Grother, Ngan and Hanaoka (2019) separately documented demographic differences in face-recognition errors, with performance varying across algorithms. These findings support evaluating relevant subgroups and error types in the intended deployment context. They do not demonstrate bias in this particular CIFAR-10 model. Privacy is also a concern even when identification is accurate. Collecting or linking facial images can enable tracking that people neither expect nor meaningfully control. Appropriate safeguards should therefore include a clearly limited purpose, proportionate collection, restricted access, retention limits and a process for challenging adverse decisions. A human reviewer should have the evidence and authority needed to question an automated result; a routine approval step alone would be insufficient. The notebook reinforces a distinction between a model&#x27;s output and justified trust in that output. A softmax score indicates the model&#x27;s relative preference among its available classes; it does not establish that the classification is true. CIFAR-10 contains no demographic annotations suitable for the fairness assessment discussed here. Its object categories and small images also differ from operational facial recognition. Deployment would require additional evidence about representative data, false positives, false negatives, changing conditions and the impact on affected people. For high-consequence uses, independent evaluation and accountability should accompany technical performance measures. </p><p>References</p><p>Buolamwini, J. and Gebru, T. (2018) ‘Gender shades: Intersectional accuracy disparities in commercial gender classification, Proceedings of the 1st Conference on Fairness, Accountability and Transparency, Proceedings of Machine Learning Research, 81, pp. 77–91. Available at: https://proceedings.mlr.press/v81/buolamwini18a.html (Accessed: 19 October 2026). </p><p>Grother, P., Ngan, M. and Hanaoka, K. (2019) Face recognition vendor test part 3: Demographic effects. NISTIR 8280. Gaithersburg, MD: National Institute of Standards and Technology. Available at: https://doi.org/10.6028/NIST.IR.8280 (Accessed: 19 October 2026). </p><p>Krizhevsky, A. (2009) Learning multiple layers of features from tiny images*. Technical report. Toronto: University of Toronto. Dataset and report available at: https://cave.cs.toronto.edu/kriz/cifar.html (Accessed: 19 October 2026). </p><p>University of Essex Online (n.d.) *Convolutional neural networks (CNN) – Object recognition* [Jupyter notebook]. Unit 9 teaching materials. Supplied file: `Unit09 Ex1 Convolutional Neural Networks (CNN) - Object Recognition.ipynb.</p><p>Wall, M. (2019) Biased and wrong, Facial recognition tech in the dock, BBC News, 8 July. Available at: https://www.bbc.com/news/business-48842750 (Accessed: 19 October 2026). Text consulted through an accessible mirror: https://bbcinsight.pages.dev/news/business-48842750.</p></div></details><details id="unit-10"><summary>Unit 10: Natural Language Processing</summary><div class="unit-content"><p>Formative: Discussion in Unit 8, Summary post was finished.  </p><p>e-Portfolio: Updated e-Portfolio. </p></div></details><details id="unit-11"><summary>Unit 11: Model Selection and Evaluation</summary><div class="unit-content"><p>e-Portfolio</p><p>Unit 11 · Findings on AUC and R² The supplied notebook was executed with scikit-learn 1.8.0. The original examples were retained with documented compatibility corrections, then extended with five controlled experiments. All datasets are available within scikit-learn; no additional CSV input is required.</p><p>Original regression calculation</p><p>The original example gives **MSE = 0.375000**, **RMSE = 0.612372**, **MAE = 0.500000** and **R² = 0.948608**. Its heading originally stated RMSE although the code calculated MSE. The completed notebook reports both.</p><p>R² measures performance relative to predicting the mean of the evaluation targets. Higher values are better; 1 indicates perfect predictions and negative values are possible. ROC AUC measures score-based class discrimination across thresholds and should be calculated from continuous probabilities or decision scores (scikit-learn developers, n.d.a; n.d.b).</p><p>1. Logistic regression C and AUC</p><figure><a href="image15.png" target="_blank" rel="noopener"><img loading="lazy" src="image15.png" alt="Unit 11: Model Selection and Evaluation — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>With observations, split, scaling and solver fixed, held-out AUC changed from **0.997275 at C=0.001** to **0.975891 at C=100**. The observed values show that changing regularisation can alter rankings and that weaker regularisation does not guarantee better held-out AUC. These results describe one exploratory split, rather than a universally optimal C.</p><p>2. Irrelevant features and AUC</p><figure><a href="image16.png" target="_blank" rel="noopener"><img loading="lazy" src="image16.png" alt="Unit 11: Model Selection and Evaluation — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>Macro AUC changed from **0.925867 without added noise** to **0.714400 with 800 irrelevant features**. With only 75 training observations, extra uninformative dimensions can distract the classifier from useful structure. The intermediate values should be interpreted as observed outcomes, not a requirement that every increase in noise produces a strictly monotonic decrease.</p><p>3. Threshold changes</p><figure><a href="image17.png" target="_blank" rel="noopener"><img loading="lazy" src="image17.png" alt="Unit 11: Model Selection and Evaluation — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>All three thresholds retain AUC **0.996226**, because the probabilities and their ranking remain fixed. Changing the threshold changes the decision rule and can alter precision, recall and the false-positive/false-negative balance. In this extension, label 1 means malignant; this reverses the positive-class meaning used by the original binary AUC demonstration.</p><p>4. Prediction-error multiplier and R² </p><figure><a href="image18.png" target="_blank" rel="noopener"><img loading="lazy" src="image18.png" alt="Unit 11: Model Selection and Evaluation — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>R² falls from **1.000000** for perfect predictions to **-2.289079** at error multiplier 8. The negative result means these predictions are worse in squared-error terms than predicting the evaluation-target mean. RMSE and MAE increase as the prediction errors grow. This experiment manipulates prediction errors directly and does not fit a regression model.</p><p>5. Ridge alpha and R² </p><figure><a href="image19.png" target="_blank" rel="noopener"><img loading="lazy" src="image19.png" alt="Unit 11: Model Selection and Evaluation — original submitted evidence"></a><figcaption>Original evidence · Select the image to view at full size.</figcaption></figure><p>On the fixed diabetes split, held-out R² was **0.484906** for ordinary least squares and **0.075928** at alpha=10,000. Excessive regularisation can cause underfitting by shrinking useful coefficients too strongly. The full table also shows whether moderate shrinkage improves performance on this particular split. RMSE and MAE retain the target&#x27;s units and complement the dimensionless R² score.</p><p>Interpretation and limitations</p><p>The original binary and Iris logistic regression AUC values are training-data scores: 0.994768 and 0.991333, respectively. They must not be reported as evidence of performance on unseen data. Their values are not directly comparable with the later held-out experiment because preprocessing, class coding and evaluation observations differ.</p><p>The original noisy Iris class-2 AUC is 0.786765; its micro AUC is 0.727733. That original example uses different splitting and preprocessing from the controlled noise extension. Multiclass averaging and the positive-class definition must therefore accompany any AUC figure. </p><p>The parameter comparisons use fixed seeds and fixed splits to isolate changes, but contain no confidence intervals or external validation. They demonstrate sensitivity to modelling choices. They do not establish causality, clinical usefulness or fairness. AUC is not a calibration measure, and neither AUC nor R² describes every operational consequence of a prediction.</p><p>Ethical, social and professional implications</p><p>An apparently strong aggregate score can conceal harmful individual errors. In the malignant-positive extension, false negatives represent malignant cases predicted as benign, while false positives represent benign cases predicted as malignant. These error types have different potential consequences. The threshold experiment therefore supports examining confusion matrices and recall alongside AUC. It does not establish a clinically acceptable threshold.</p><p>Evaluation integrity is a professional responsibility. Fitting and scoring on the same data can present an overly favourable impression of generalisation. Preprocessing must be fitted on training data, class meanings must be documented, and results should include the evaluation method and limitations. Repeatedly comparing parameters on the same held-out split makes that split part of exploration; model selection would require cross-validation within development data and a separate final test set.</p><p>Privacy, appropriate data access and transparent reporting also matter when working with health-related datasets. The present exercises use packaged teaching datasets and do not justify collecting identifiable patient information. Aggregate AUC and R² cannot establish demographic fairness; subgroup error analysis would require suitable, responsibly obtained attributes and adequate sample sizes. No demographic fairness claim or deployment recommendation follows from these experiments.</p><p>References</p><p>scikit-learn developers (n.d.a) *roc_auc_score*. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html (Accessed: 19 October 2026).</p><p>scikit-learn developers (n.d.b) *r2_score*. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.metrics.r2_score.html (Accessed: 19 October 2026).</p><p>scikit-learn developers (n.d.c) *OneVsRestClassifier*. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html (Accessed: 19 October 2026).</p></div></details><details id="unit-12"><summary>Unit 12: Industry 4.0 and Machine learning</summary><div class="unit-content"><p>e-Portfolio: Updated </p></div></details></section><section id="about" class="section">
+      <h2 class="section-title">About Me</h2>
+
+      <div class="content-block">
+        <h2>Ramón Flores Arteaga</h2>
+
+<h3>Mechatronics Engineer | MSc Artificial Intelligence</h3>
+
+<p>
+Welcome to my professional portfolio. I am a Mechatronics Engineer currently
+pursuing a Master of Science in Artificial Intelligence at the University of
+Essex. My professional background combines industrial maintenance,
+automation, artificial intelligence, project management and software
+development within multinational companies.
+</p>
+
+<hr>
+
+<h2>About Me</h2>
+
+<p>
+I am a person who takes risks to achieve more, with great initiative,
+adaptability to change and strong teamwork skills. Despite adversity,
+I remain focused on achieving objectives while helping the entire team
+reach its goals.
+</p>
+
+<hr>
+
+<h2>Contact</h2>
+
+<p><strong>Phone:</strong> 231-286-9191</p>
+
+<p><strong>Email:</strong> rammarteaga@gmail.com</p>
+
+<p>
+<strong>LinkedIn:</strong>
+<a href="https://www.linkedin.com" target="_blank">
+Ramón Flores Arteaga
+</a>
+</p>
+
+<hr>
+
+<h2>Languages</h2>
+
+<ul>
+<li>English — C1</li>
+<li>German — B1</li>
+<li>French — B1</li>
+</ul>
+
+<hr>
+
+<h2>Technical Skills</h2>
+
+<ul>
+<li>Artificial Intelligence</li>
+<li>Large Language Models (LLMs)</li>
+<li>NVIDIA Jetson AI</li>
+<li>Python</li>
+<li>Machine Learning</li>
+<li>PLC Programming</li>
+<li>Allen-Bradley PLC</li>
+<li>Siemens PLC</li>
+<li>Millennium PLC</li>
+<li>Ignition SCADA</li>
+<li>Variable Frequency Drives (VFDs)</li>
+<li>MySQL</li>
+<li>IBM Maximo</li>
+<li>SAP</li>
+<li>SolidWorks</li>
+<li>AutoCAD</li>
+<li>MATLAB</li>
+<li>Interloc Informer</li>
+</ul>
+
+<hr>
+
+<h2>Certifications</h2>
+
+<ul>
+<li>Google Agile Project Management (Scrum, Kanban, Waterfall, XP, Lean)</li>
+<li>IBM Maximo Certification – Grupo Bimbo</li>
+<li>Deep Learning Artificial Intelligence – Actumlogos</li>
+<li>Microsoft Azure Fundamentals</li>
+<li>ISTQB – Ford Motor Company</li>
+<li>CAN Protocol – Ford Motor Company</li>
+<li>GPDS v3.0 – Ford Motor Company</li>
+<li>VESM – Ford Motor Company</li>
+<li>Jira & Jenkins – Ford Motor Company</li>
+<li>Python for Business Analytics</li>
+</ul>
+
+<h2>Professional Experience</h2>
+
+<!-- ===================================================== -->
+
+<h3>JBS USA – Regional Beef Souderton</h3>
+
+<p><strong>Maintenance Supervisor / Engineering</strong></p>
+
+<p>September 2024 – Present</p>
+
+<ul>
+<li>Lead maintenance and engineering operations across Rendering, Blood Processing, Grinding, Wastewater Treatment and Hides facilities.</li>
+
+<li>Manage maintenance personnel, contractors and reliability initiatives to maximize equipment uptime and production efficiency.</li>
+
+<li>Develop predictive maintenance systems using Artificial Intelligence, motor amperage monitoring and failure prediction analytics.</li>
+
+<li>Design, implement and troubleshoot PLC, VFD and Ignition SCADA systems.</li>
+
+<li>Lead electrical and mechanical troubleshooting for critical production equipment.</li>
+
+<li>Train maintenance technicians in troubleshooting, preventive maintenance and safety.</li>
+
+<li>Optimize maintenance inventory by refurbishing and repurposing existing assets.</li>
+
+<li>Develop engineering and automation projects that improve plant efficiency.</li>
+
+<li>Create an AI-powered LLM troubleshooting platform using plant manuals, maintenance records and operational documentation.</li>
+
+<li>Support capital projects, budgeting, asset management and continuous improvement initiatives.</li>
+
+</ul>
+
+<hr>
+
+<h3>JBS – Pilgrim's Pride Corporation</h3>
+
+<p><strong>Maintenance Supervisor & Preventive Maintenance</strong></p>
+
+<p>January 2023 – July 2024</p>
+
+<ul>
+
+<li>Supervised preventive, predictive and corrective maintenance activities.</li>
+
+<li>Maintained WOG performance while minimizing second-grade chicken production.</li>
+
+<li>Oversaw equipment performance in the evisceration department.</li>
+
+</ul>
+
+<h3>Major Engineering Projects</h3>
+
+<ul>
+
+<li>Designed and implemented an automated washed-box counting system.</li>
+
+<li>Developed an automated compressor cooling system reducing oil costs by approximately $3,560 annually.</li>
+
+<li>Designed an AI chicken counting system using Deep Learning and photoelectric sensors, reducing defects by 50%.</li>
+
+<li>Designed and implemented an evisceration conveyor system increasing liver and gizzard recovery from 300 kg/day to approximately 2,000 kg/day.</li>
+
+<li>Developed an Artificial Intelligence model to predict Salmonella and E. coli risks for the Quality Assurance department.</li>
+
+<li>Reprogrammed PLC logic for the evisceration production line.</li>
+
+</ul>
+
+<hr>
+
+<h3>Grupo Bimbo Corporate</h3>
+
+<p><strong>Global Plant & Fleet Project Manager</strong></p>
+
+<p>August 2022 – January 2023</p>
+
+<p><strong>Global Plant & Fleet Maintenance Supervisor</strong></p>
+
+<p>April 2022 – January 2023</p>
+
+<ul>
+
+<li>Developed and supervised IBM Maximo integrations with Oracle Cloud.</li>
+
+<li>Implemented enterprise maintenance systems across Canada, United States, Brazil, Latin America, Spain, Portugal, United Kingdom, South Africa and additional global operations.</li>
+
+<li>Managed international IT and maintenance project budgets ranging from $50,000 to $1.2 million USD.</li>
+
+<li>Worked within Agile and Scrum methodologies delivering global IT solutions.</li>
+
+</ul>
+
+<hr>
+
+<h3>Ford Motor Company – Estrateg IA</h3>
+
+<p><strong>Software Tools Developer</strong></p>
+
+<p>January 2022 – June 2022</p>
+
+<ul>
+
+<li>Developed software tools supporting engineering operations.</li>
+
+<li>Participated in process automation and software development initiatives.</li>
+
+<li>Worked with enterprise development methodologies and engineering teams.</li>
+
+</ul>
+
+<hr>
+
+<h3>Sophava Framing Corporation</h3>
+
+<p><strong>Engineering Project Manager</strong></p>
+
+<p>November 2021 – January 2022</p>
+
+<ul>
+
+<li>Managed engineering projects and coordinated implementation activities.</li>
+
+<li>Supported project planning and execution.</li>
+
+</ul>
+
+<hr>
+
+<h3>Vista Entertainment</h3>
+
+<p><strong>Help Desk Support Specialist</strong></p>
+
+<p>August 2020 – August 2021</p>
+
+<ul>
+
+<li>Provided technical support and troubleshooting for software and hardware systems.</li>
+
+<li>Resolved end-user technical issues while maintaining high customer satisfaction.</li>
+
+</ul>
+
+<h2>Education</h2>
+
+<!-- ===================================================== -->
+
+<div class="content-block">
+
+    <h3>University of Essex — United Kingdom</h3>
+
+    <p><strong>Master of Science (MSc) in Artificial Intelligence</strong></p>
+
+    <p>June 2025 – Present</p>
+
+    <p>
+    Currently pursuing a Master of Science in Artificial Intelligence,
+    specializing in intelligent agents, machine learning, large language
+    models, explainable AI, responsible AI, and autonomous systems.
+    </p>
+
+</div>
+
+<!-- ===================================================== -->
+
+<div class="content-block">
+
+    <h3>Instituto Politécnico Nacional (IPN) — Mexico</h3>
+
+    <p><strong>Bachelor of Science in Mechatronics Engineering</strong></p>
+
+    <p>January 2016 – August 2021</p>
+
+    <p>
+    Studied mechanical design, industrial automation, robotics,
+    control systems, electronics, embedded systems,
+    PLC programming and industrial manufacturing processes.
+    </p>
+
+</div>
+
+<!-- ===================================================== -->
+
+<div class="content-block">
+
+    <h3>National Taiwan University of Science and Technology — Taiwan</h3>
+
+    <p><strong>International Engineering Program</strong></p>
+
+    <p>June 2019 – January 2020</p>
+
+    <ul>
+
+        <li>Neural Networks</li>
+
+        <li>Neuro-Fuzzy Systems</li>
+
+        <li>Optimal Control</li>
+
+        <li>Autonomous Robotic Systems</li>
+
+    </ul>
+
+</div>
+
+<!-- ===================================================== -->
+
+<div class="content-block">
+
+    <h3>Massachusetts Institute of Technology (MITx)</h3>
+
+    <p><strong>Diploma in Computer Science and Programming Using Python</strong></p>
+
+    <p>August 2021 – January 2022</p>
+
+    <p>
+    Completed advanced programming coursework focused on Python,
+    software development and computational problem solving.
+    </p>
+
+</div>
+
+        <div class="tag-list">
+          <span class="tag">Mechatronics Engineering</span>
+          <span class="tag">Industrial Automation</span>
+          <span class="tag">PLC Programming</span>
+          <span class="tag">VFD Troubleshooting</span>
+          <span class="tag">SCADA</span>
+          <span class="tag">Artificial Intelligence</span>
+        </div>
+
+        <div class="button-row">
+          <a
+            class="button"
+            href="https://github.com/RamonFArteaga"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+          <a
+            class="button secondary"
+            href="mailto:rammarteaga@gmail.com"
+          >
+            Email
+          </a>
+        </div>
+      </div>
+    </section></main><footer><div class="container"><p>© 2026 Ramon Flores Arteaga · MSc Artificial Intelligence · University of Essex</p></div></footer>
+<script>
+const sections = [...document.querySelectorAll('main>.section')];
+function openSection(id){if(!sections.some(s=>s.id===id))id='home';sections.forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav-button').forEach(b=>{b.classList.toggle('active',b.dataset.section===id);b.setAttribute('aria-current',b.dataset.section===id?'page':'false')});window.scrollTo({top:0,behavior:'instant'})}
+document.querySelectorAll('[data-section]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.section;if(location.hash.slice(1)===id)openSection(id);else location.hash=id}));
+window.addEventListener('hashchange',()=>openSection(location.hash.slice(1)));openSection(location.hash.slice(1)||'home');
+document.getElementById('expand-units').addEventListener('click',e=>{const units=[...document.querySelectorAll('#discussions details')];const expand=units.some(d=>!d.open);units.forEach(d=>d.open=expand);e.target.textContent=expand?'Collapse all units':'Expand all units'});
+</script></body></html>

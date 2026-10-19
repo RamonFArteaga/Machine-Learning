@@ -1,0 +1,326 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Individual Presentation Transcript | Ramon Flores Arteaga</title><style>
+    :root {
+  --background: #0f1217;
+  --surface: #171b22;
+  --surface-light: #202630;
+  --border: #303846;
+
+  --text: #e8ebf0;
+  --muted: #aeb7c6;
+
+  --accent: #2ea8ff;
+  --accent-dark: #0078d4;
+  --link: #59b8ff;
+}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 30px 0 25px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 4px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(9, 11, 13, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  overflow-x: visible;
+  list-style: none;
+}
+
+    .nav-button {
+      background: none;
+      border: none;
+      color: #b5bfd4;
+      cursor: pointer;
+      font-size: 1.05rem;
+      font-weight: bold;
+      padding: 20px 0 17px;
+      white-space: nowrap;
+      border-bottom: 4px solid transparent;
+    }
+
+    .nav-button:hover {
+      color: var(--text);
+    }
+
+    .nav-button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent-dark);
+    }
+
+    main {
+      min-height: 70vh;
+      padding: 45px 0 70px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.35s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero {
+      padding: 65px 0;
+    }
+
+    .hero-label {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      max-width: 850px;
+      margin: 12px 0 20px;
+      font-size: clamp(2.2rem, 6vw, 4.4rem);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.15rem;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .card:hover{
+    transform: translateY(-6px);
+    border-color:#2EA8FF;
+    background:var(--surface-light);
+    box-shadow:0 0 25px rgba(46,168,255,.18);
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .button:hover {
+      filter: brightness(1.15);
+      text-decoration: none;
+    }
+
+    .section-title {
+      margin-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    .section-introduction {
+      max-width: 850px;
+      margin-bottom: 30px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-dark);
+      background: var(--surface-light);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    .content-block {
+      margin-bottom: 28px;
+      padding: 25px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .content-block h3 {
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .content-block p {
+      margin-bottom: 14px;
+    }
+
+    .content-block ul {
+      padding-left: 22px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .project-agents {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .agent {
+      padding: 18px;
+      text-align: center;
+      background: var(--surface-light);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+  .nav-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 28px;
+    padding-bottom: 7px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-dark) var(--surface);
+  }
+
+  .nav-list::-webkit-scrollbar {
+    height: 7px;
+  }
+
+  .nav-list::-webkit-scrollbar-track {
+    background: var(--surface);
+    border-radius: 10px;
+  }
+
+  .nav-list::-webkit-scrollbar-thumb {
+    background: var(--accent-dark);
+    border-radius: 10px;
+  }
+
+  .hero {
+    padding: 40px 0;
+  }
+
+  main {
+    padding-top: 30px;
+  }
+}
+
+
+    .discussion-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+  
+nav .container{width:min(1400px,94%)} .nav-list{gap:0 24px}.nav-button{font-size:.95rem;white-space:normal;text-align:left;padding:16px 0;max-width:350px}
+img{max-width:100%;height:auto;display:block}figure{margin:24px 0}figure img{border-radius:8px;background:white}figcaption{color:var(--muted);font-size:.85rem;margin-top:8px}
+details{border:1px solid var(--border);border-radius:10px;margin:16px 0;background:var(--surface)}summary{cursor:pointer;font-weight:bold;padding:22px;color:var(--text)}details .unit-content{padding:0 24px 24px}.unit-content p{white-space:pre-wrap;overflow-wrap:anywhere}
+.table-wrap{overflow:auto;margin:20px 0}table{border-collapse:collapse;width:100%}td,th{padding:10px;border:1px solid var(--border);text-align:left}iframe{width:100%;min-height:75vh;border:1px solid var(--border);border-radius:8px;background:white;margin-top:24px}
+.file-meta{color:var(--muted);font-size:.85rem}.content-block p{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#11151c;border:1px solid var(--border);padding:18px;border-radius:8px;margin:16px 0;max-height:650px;overflow:auto}code{font-family:monospace}.button{cursor:pointer} .card .button-row{margin-top:20px} .section-title{overflow-wrap:anywhere}
+@media(max-width:650px){.nav-list{gap:0 15px}.nav-button{font-size:.8rem;max-width:150px}.hero{padding:30px 0}main{padding-top:24px}details .unit-content{padding:0 12px 16px}summary{padding:16px}iframe{min-height:55vh}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style></head><body><main class="container"><a class="button secondary" href="index.html#individual-presentation">← Individual Presentation</a><article class="content-block"><h1>Presentation Transcript</h1><p>Comparative Intelligence and Ethics in Machine Learning Systems</p><p>Spoken transcript 1594 words across 17 slides</p><p>Slide 1 Presentation</p><p>Hello, my name is Ramon Flores Arteaga. I am studying for a master&#x27;s degree in Artificial Intelligence. This presentation is for the Machine Learning July 2026 course, and the assignment topic is Comparative Intelligence and Ethics in Machine Learning Systems.</p><p>My project compares classical machine learning, a small convolutional neural network, and a hybrid using pretrained deep features for distracted driver classification. The hybrid achieved the strongest results, but error analysis revealed frequent false alarms and differences between drivers. I will explain the experiment, interpret its limitations, and connect these findings to ethical responsibilities and a realistic deployment proposal.</p><p>Slide 2 Dataset and research question</p><p>I used the State Farm Distracted Driver Detection dataset from Kaggle. It contains 22,424 labelled images from 26 drivers across ten behaviour classes. These include safe driving, texting, phone use, operating the radio, drinking, reaching behind, hair or makeup activities, and talking to a passenger. Texting and phone use are separated by hand.</p><p>My research question is which approach best generalizes to drivers excluded from training. Driver identifiers make this evaluation possible. However, the labels describe visible behaviours in individual images. Recognizing a posture does not directly measure attention or demonstrate accident prevention.</p><p>Slide 3 Preprocessing and separation by driver</p><p>I separated the data by driver, using 17,446 development images from twenty drivers and 4,978 final-test images from six different drivers. This reduces leakage from repeatedly seeing the same person&#x27;s appearance or vehicle interior.</p><p>Within development data, I used five driver-separated folds with identical splits across approaches. HOG used images resized to 128 by 96 pixels. MobileNet used its pretrained resizing, cropping, and normalization, producing 224 by 224 inputs. Each SVM&#x27;s scaling was fitted only on training data. Model settings were selected using development results before evaluating the final test.</p><p>Slide 4 Three modelling approaches</p><p>The classical approach combined Histogram of Oriented Gradients, or HOG, with an SVM. HOG represents local edge directions using handcrafted visual features.</p><p>The deep learning baseline was a small CNN trained from scratch for five epochs per fold, using Adam with a learning rate of 0.001 and weight decay of 0.0001.</p><p>The improvement approach used frozen, pretrained MobileNetV3 Small features followed by a linear SVM. It is therefore a hybrid: deep learning supplies the representation, and classical learning supplies the classifier. The models share the same labels and driver splits, although their preprocessing and training strategies differ.</p><p>Slide 5 Validation and performance measures</p><p>I measured accuracy, macro precision, macro recall, and macro F1. Accuracy measures correct class assignments. Precision measures how often a class prediction is correct, while recall measures how many actual examples of that class are identified.</p><p>Macro averaging gives every behaviour equal weight, helping expose weaknesses hidden by overall accuracy. Development cross-validation guided selection and revealed variation across drivers. Because the folds also informed tuning, the best development score is a selection result. The separate final test provides an additional estimate, but six held-out drivers cannot represent every driving environment.</p><p>Slide 6 Pretrained features and regularization</p><p>The original CNN achieved 46.01% mean cross-validation accuracy, below HOG and SVM at 49.23%. Initial MobileNet features with an SVM achieved only 47.98%, so pretrained features did not automatically solve the problem.</p><p>I tested stronger SVM regularization. Lowering C more strongly penalizes complex decision boundaries. At C equal to 0.0001, the hybrid achieved 61.02% mean accuracy and macro F1 of 0.6038. I selected this setting by macro F1. Features were extracted once and reused, reducing computation. Further reductions in C did not improve the selection metric, so tuning stopped before final-test evaluation.</p><p>Slide 7 Final comparison on unseen drivers</p><p>I fitted each approach on all development data and evaluated it on the same 4,978 final-test images. The CNN retained its five-epoch budget.</p><p>HOG and SVM achieved 58.00% accuracy and macro F1 of 0.5897. The small CNN achieved 37.75% accuracy and macro F1 of 0.3577. The hybrid achieved 70.11% accuracy and macro F1 of 0.6823, improving accuracy over HOG by 12.11 percentage points.</p><p>Under this budget, pretrained features with regularization provided the best result. This comparison does not isolate every contributing factor or establish that hybrids always outperform fully trained neural networks.</p><p>Slide 8 Behaviour errors and safety trade offs</p><p>Phone use on the left had the hybrid&#x27;s highest class F1, at 0.8494. Talking to a passenger had the lowest, at 0.4408. Hair and makeup recognition was also weak.</p><p>When I grouped behaviours into safe and distracted outcomes, 2.70% of distracted images were classified as safe. Conversely, 53.90% of safe-driving images were classified as distracted. This combines relatively few missed distractions with frequent false alarms.</p><p>These are image-level rates. They cannot be interpreted as real-time warning rates without evaluating video sequences, alert timing, and repeated warnings.</p><p>Slide 9 Grad CAM explanations</p><p>I used Grad-CAM to explain the hybrid. Gradients passed from the fitted SVM score through feature scaling and MobileNet&#x27;s convolutional features. These maps explain the hybrid, not the small CNN.</p><p>A correct phone-use prediction highlighted the hand and phone near the face. A false reaching-behind prediction highlighted the lower seat or lap. A missed texting example highlighted the steering hand and bright window.</p><p>Nine examples were examined, including six additional examples from different drivers. They suggest possible reliance on contextual cues. However, these coarse maps do not prove reasoning or establish the causes of errors across the dataset.</p><p>Slide 10 Notebook demonstration</p><p>I will now show the completed notebook. First, the final comparison table reports all three models on identical held-out images. Next, the normalized confusion matrix shows how each actual behaviour is distributed across predicted classes.</p><p>The Grad-CAM pairs display actual and predicted labels alongside highlighted regions. I will compare a correct phone-use prediction, a false alarm, and a missed distraction.</p><p>This demonstration uses existing outputs. I am not retraining models or adjusting settings using test examples. The purpose is to make the results and selected explanations inspectable.</p><p>Slide 11 Performance disparities across drivers</p><p>Accuracy ranged from 47.97% for driver p050 to 88.56% for p035, a gap of 40.59 percentage points. Driver p026 achieved 71.15% overall accuracy, yet its false-alarm rate on safe-driving images was 96.15%.</p><p>The model therefore provided inconsistent reliability across individuals. Appearance, posture, lighting, image quality, and vehicle interior could contribute, but this analysis did not isolate their effects. Driver identifiers do not provide verified demographic information. I report driver-level disparities without claiming demographic discrimination. More diverse evaluation would be required before making fairness claims about age, gender, or other groups.</p><p>Slide 12 Ethical considerations and model recommendation</p><p>Data provenance starts with the Kaggle competition, but public access does not establish unrestricted reuse or deployment consent. Before operational use, I would verify permitted uses and whether participants consented to the proposed purpose. Faces and cabin details are personally identifiable information. Images would require restricted access, encryption, limited retention, and deletion procedures.</p><p>Fairness concerns follow from the measured errors. False negatives could provide false reassurance when distraction is present. False positives could cause alert fatigue or unfair disciplinary action. Driver disparities indicate that some people may bear more of these harms, even though demographic bias was not measured. Background reliance and limited driver coverage also create risks in unfamiliar vehicles or lighting.</p><p>I recommend the hybrid for further controlled research because it has the best measured performance. Its 53.90% false-alarm rate prevents recommending current operational deployment. Predictions should not independently determine employment or insurance outcomes, and users need a way to contest errors.</p><p>Slide 13 Proposed deployment and inference API</p><p>For a future system, I would prefer local inference inside the vehicle, avoiding dependence on connectivity and reducing transmission of cabin images. A service would apply identical preprocessing, MobileNet feature extraction, scaling, and SVM prediction.</p><p>For a controlled server-based pilot, FastAPI could expose an authenticated HTTPS prediction endpoint. The application would submit an image and receive its class and model version. SVM decision scores would not be presented as calibrated probabilities.</p><p>AWS SageMaker could provide a managed inference endpoint with autoscaling. Google Vertex AI and Azure Machine Learning are alternative platforms. Cloud transmission introduces privacy and latency trade-offs. These are proposed options; no API or cloud deployment was implemented.</p><p>Slide 14 Scalability monitoring and retraining</p><p>Scaling requires load testing, defined latency targets, and sufficient inference capacity. Replicated API containers or managed endpoint autoscaling could handle additional requests. Vehicle-based inference scales across devices, but model updates still require version control.</p><p>Monitoring would track latency, failed requests, input-quality changes, and prediction patterns. Measuring false alarms, missed distractions, and driver disparities requires appropriately labelled review data; predictions alone cannot reveal accuracy.</p><p>Retraining would be triggered by sustained degradation or new environments, using permitted, representative data. Each candidate would undergo driver-separated validation and a new independent test before a staged release, with rollback available. The current final test would not become a repeated tuning resource.</p><p>Slide 15 Tools libraries and deployment limits</p><p>PyTorch and torchvision supported the CNN and pretrained MobileNet. Scikit-learn supplied HOG-feature classification pipelines, scaling, and performance metrics. Scikit-image provided HOG extraction. NumPy and pandas organized arrays and results, and Matplotlib displayed charts.</p><p>In a proposed deployment, FastAPI would provide the service interface and Docker could package compatible dependencies. Preprocessing, model weights, scaler, classifier, and class mapping must be versioned together.</p><p>The existing notebook does not implement temporal warning logic or operational monitoring. Cropping, still-image labels, limited driver coverage, and the short CNN training budget restrict conclusions. A sequence-level warning policy would require separate validation before any road-based trial.</p><p>Slide 16 Conclusion</p><p>The hybrid achieved the strongest final-test result: 70.11% accuracy and macro F1 of 0.6823. HOG and SVM outperformed the small CNN trained from scratch under the chosen budget.</p><p>Separating drivers, comparing multiple metrics, investigating Grad-CAM, and measuring subgroup disparities exposed limitations that accuracy alone would hide. The evidence supports the hybrid as a research prototype, but frequent false alarms and uneven reliability prevent recommending it as a current driver-safety system.</p><p>Future work could evaluate task-specific fine-tuning and broader driver coverage using new evaluation data. Deployment decisions must consider privacy, fairness, operational performance, and controlled retraining together.</p><p>Slide 17 References</p><p>These are the references used, thank you. </p><p>Amazon Web Services (n.d.a) Data and model quality monitoring with Amazon SageMaker Model Monitor. Available at: https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html (Accessed: 12 October 2026). Amazon SageMaker AI</p><p>Amazon Web Services (n.d.b) Real-time inference. Available at: https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints.html (Accessed: 12 October 2026). Amazon SageMaker AI</p><p>FastAPI (n.d.) FastAPI in containers – Docker. Available at: https://fastapi.tiangolo.com/deployment/docker/ (Accessed: 12 October 2026). FastAPI</p><p>Howard, A., Sandler, M., Chu, G., Chen, L.-C., Chen, B., Tan, M., Wang, W., Zhu, Y., Pang, R., Vasudevan, V., Le, Q.V. and Adam, H. (2019) ‘Searching for MobileNetV3’, Proceedings of the IEEE/CVF International Conference on Computer Vision, pp. 1314–1324. Available at: https://openaccess.thecvf.com/content_ICCV_2019/html/Howard_Searching_for_MobileNetV3_ICCV_2019_paper.html (Accessed: 12 October 2026). openaccess.thecvf.com</p><p>PyTorch (n.d.) mobilenet_v3_small. Available at: https://docs.pytorch.org/vision/main/models/generated/torchvision.models.mobilenet_v3_small.html (Accessed: 12 October 2026). Torchvision main documentation</p><p>Scikit-image (n.d.) skimage.feature.hog. Available at: https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.hog (Accessed: 12 October 2026). skimage 0.26.0 documentation</p><p>Scikit-learn (n.d.a) LinearSVC. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.svm.LinearSVC.html (Accessed: 12 October 2026). scikit-learn 1.9.1 documentation</p><p>Scikit-learn (n.d.b) StandardScaler. Available at: https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html (Accessed: 12 October 2026). scikit-learn 1.9.1 documentation</p><p>Selvaraju, R.R., Cogswell, M., Das, A., Vedantam, R., Parikh, D. and Batra, D. (2017) ‘Grad-CAM: Visual explanations from deep networks via gradient-based localization’, Proceedings of the IEEE International Conference on Computer Vision, pp. 618–626. Available at: https://openaccess.thecvf.com/content_iccv_2017/html/Selvaraju_Grad-CAM_Visual_Explanations_ICCV_2017_paper.html (Accessed: 12 October 2026). openaccess.thecvf.com</p><p>State Farm (n.d.) State Farm distracted driver detection. Kaggle. Available at: https://www.kaggle.com/competitions/state-farm-distracted-driver-detection (Accessed: 12 October 2026). Kaggle</p></article></main></body></html>
